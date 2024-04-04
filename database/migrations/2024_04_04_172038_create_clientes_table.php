@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
+            $table->string('foto')->nullable(false);
             $table->string('nome', 80)->nullable(false);
             $table->string('telefone', 11)->nullable(false);
             $table->string('endereco', 120)->nullable(false);
             $table->string('email', 120)->nullable(false);
             $table->string('password', 120)->nullable(false);
-            $table->string('foto')->nullable(false);
             $table->timestamps();
         });
     }

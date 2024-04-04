@@ -12,19 +12,20 @@ class ClienteController extends Controller
         
         $clientesComFoto = $clientes->map(function($cliente){
             return [
+                'foto' => asset('storage/' . $cliente->foto),
                 'nome' => $cliente->nome,
                 'telefone' => $cliente->telefone,
                 'endereco' => $cliente->endereco,
                 'email' => $cliente->email, 
                 'password' => $cliente->password,
-                'foto' => asset('storage/' . $cliente->foto),
+               
             ];
         });
         return response()->json($clientesComFoto);
     }
 
     public function store (Request $request){
-        $produtoData = $request->all();
+        $clienteData = $request->all();
 
         if($request->hasFile('imagem')){
             $imagem = $request->file('imagem');
