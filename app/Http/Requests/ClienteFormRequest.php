@@ -28,7 +28,7 @@ class ClienteFormRequest extends FormRequest
             'nome' => 'required|max:120|min:5',
             'endereco' => 'required|max:120|min:20',
             'telefone' => 'required|max:11|min:10',
-            'email' => 'required|max:120|min:20',
+            //'email' => 'required|max:120|min:20',
             'cpf'=>'required|max:11|min:11|unique:clientes,cpf',
             'password' => 'required|'
         ];
@@ -54,7 +54,6 @@ class ClienteFormRequest extends FormRequest
             'telefone.min' => 'Telefone deve conter no mínimo 10 caracteres',
             'email.required' => 'E-mail obrigatório',
             'email.max' => 'E-mail deve conter no máximo 120 caracteres',
-            'email.email' => 'Formato de e-mail inválido',
             'email.unique' => 'E-mail já cadastrado no sistema',
             'cpf.required' => 'CPF obrigatório',
             'cpf.max' => 'CPF deve conter no máximo 11 caracteres',

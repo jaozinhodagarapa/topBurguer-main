@@ -28,7 +28,7 @@ class ClienteController extends Controller
 
     public function store (ClienteFormRequest $request){
         $clienteData = $request->all();
-        return $clienteData;
+       
         if($request->hasFile('foto')){
             $foto = $request->file('foto');
             $nomeFoto = time().'.'.$foto->getClientOriginalExtension();
