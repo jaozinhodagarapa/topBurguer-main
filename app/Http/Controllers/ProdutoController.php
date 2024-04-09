@@ -33,4 +33,6 @@ class ProdutoController extends Controller
         $produto = Produto::create($produtoData);
         return response()->json(['produto' => $produto], 201);
     }
+
+    
 }

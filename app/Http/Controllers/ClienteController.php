@@ -12,12 +12,13 @@ class ClienteController extends Controller
         
         $clientesComFoto = $clientes->map(function($cliente){
             return [
-                'foto' => asset('storage/' . $cliente->foto),
+                'foto' => $cliente-> foto,
                 'nome' => $cliente->nome,
-                'telefone' => $cliente->telefone,
                 'endereco' => $cliente->endereco,
+                'telefone' => $cliente->telefone,
                 'email' => $cliente->email, 
-                'password' => $cliente->password,
+                'cpf' => $cliente->cpf,
+                'senha' => $cliente->senha,
                
             ];
         });
@@ -36,5 +37,6 @@ class ClienteController extends Controller
         $cliente = Cliente::create($produtoData);
         return response()->json(['produto' => $cliente], 201);
     }
+    
 }
 

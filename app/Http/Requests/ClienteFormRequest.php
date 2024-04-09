@@ -26,38 +26,40 @@ class ClienteFormRequest extends FormRequest
         return [
             'foto' => 'required',
             'nome' => 'required|max:120|min:5',
+            'endereco' => 'required|max:120|min:20',
             'telefone' => 'required|max:11|min:10',
-            'endereco' => 'required|endereco|max:120|',
-            'email' => 'required|email|max:120|unique:clientes,email',
-            'password' => 'required',
+            'email' => 'required|max:120|min:20',
+            'cpf'=>'required|max:11|min:11|unique:clientes,cpf',
+            'senha' => 'required|'
         ];
     }
-
     public function failedValidation(Validator $validator){
         throw new HttpResponseException(response()->json([
-            'success' => false,
+            'status' => false,
             'error' => $validator->errors()
         ]));
-}
+    }
 
     public function messages(){
         return [
-            'foto.required' => 'Foto é obrigatorio',
-            'nome.required' => 'O campo nome é obrigatorio',
-            'nome.max' => 'o campo nome deve conter no maximo 120 caracteres',
-            'nome.min' => 'o campo nome deve conter no minimo 5 caracteres',
-            'telefone.required' => 'O campo telefone é obrigatorio',
-            'telefone.max' => 'o campo telefone deve conter no maximo 11 caracteres',
-            'telefone.min' => 'o campo telefone deve conter no minimo 10 caracteres',
-            'enedereco.required' => 'O campo endereço é obrigatorio',
-            'endereco.max' => 'o campo endereço deve conter no maximo 120 caracteres',
-            'endereco.min' => 'o campo endereço deve conter no minimo 50 caracteres',
-            'email.unique' => 'o email ja foi cadastrado',
-            'email.required' => 'este campo é obrigatorio',
-            'email.max' => 'o campo email deve conter no maximo 120 caracteres',
-            'email.email' => 'Email invalido',
-            'password.required' => 'o campo senha é obrigatorio',
-
+            'foto.required' => 'Foto é obrigatório',
+            'nome.required' => 'Nome obrigatório',
+            'nome.max' => 'Nome deve conter no máximo 120 caracteres',
+            'nome.min' => 'Nome deve conter no mínimo 5 caracteres',
+            'endereco.required' => 'Endereço obrigatório',
+            'endereco.max' => 'Endereço deve conter no máximo 120 caracteres',
+            'endereco.min' => 'Telefone deve conter no mínimo 10 caracteres',
+            'telefone.required' => 'Telefone obrigatório',
+            'telefone.max' => 'Telefone deve conter no máximo 11 caracteres',
+            'telefone.min' => 'Telefone deve conter no mínimo 10 caracteres',
+            'email.required' => 'E-mail obrigatório',
+            'email.max' => 'E-mail deve conter no máximo 120 caracteres',
+            'email.email' => 'Formato de e-mail inválido',
+            'email.unique' => 'E-mail já cadastrado no sistema',
+            'cpf.required' => 'CPF obrigatório',
+            'cpf.max' => 'CPF deve conter no máximo 11 caracteres',
+            'cpf.min' => 'CPF deve conter no mínimo 11 caracteres',
+            'senha.required' => 'Senha obrigatório',
         ];
     }
 }
