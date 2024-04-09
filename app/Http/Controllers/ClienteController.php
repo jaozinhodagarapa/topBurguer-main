@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClienteFormRequest;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 
@@ -18,25 +19,26 @@ class ClienteController extends Controller
                 'telefone' => $cliente->telefone,
                 'email' => $cliente->email, 
                 'cpf' => $cliente->cpf,
-                'senha' => $cliente->senha,
+                'password' => $cliente->password,
                
             ];
         });
         return response()->json($clientesComFoto);
     }
 
-    public function store (Request $request){
+    public function store (ClienteFormRequest $request){
         $clienteData = $request->all();
-
-        if($request->hasFile('imagem')){
-            $imagem = $request->file('imagem');
-            $nomeImagem = time().'.'.$imagem->getClientOriginalExtension();
-            $caminhoImagem = $imagem->storeAs('imagens/produtos', $nomeImagem, 'public');
-            $produtoData['imagem'] = $caminhoImagem;
+        return $clienteData;
+        if($request->hasFile('foto')){
+            $foto = $request->file('foto');
+            $nomeFoto = time().'.'.$foto->getClientOriginalExtension();
+            $caminhoFoto = $foto->storeAs('imagens/clientes', $nomeFoto, 'public');
+            $clienteData['foto'] = $caminhoFoto;
         }
-        $cliente = Cliente::create($produtoData);
-        return response()->json(['produto' => $cliente], 201);
+      
+        $cliente = Cliente::create($clienteData);
+        return response()->json(['cliente' => $cliente], 201);
     }
-    
+
 }
 

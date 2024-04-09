@@ -30,7 +30,7 @@ class ClienteFormRequest extends FormRequest
             'telefone' => 'required|max:11|min:10',
             'email' => 'required|max:120|min:20',
             'cpf'=>'required|max:11|min:11|unique:clientes,cpf',
-            'senha' => 'required|'
+            'password' => 'required|'
         ];
     }
     public function failedValidation(Validator $validator){
@@ -59,7 +59,8 @@ class ClienteFormRequest extends FormRequest
             'cpf.required' => 'CPF obrigatório',
             'cpf.max' => 'CPF deve conter no máximo 11 caracteres',
             'cpf.min' => 'CPF deve conter no mínimo 11 caracteres',
-            'senha.required' => 'Senha obrigatório',
+            'cpf.unique' => 'CPF já foi cadastrado no sistema',
+            'passwod.required' => 'Senha obrigatório',
         ];
     }
 }

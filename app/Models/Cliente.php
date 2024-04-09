@@ -16,6 +16,6 @@ class Cliente extends Model
         'telefone', 
         'email',
         'cpf',
-        'senha',
+        'password',
     ];
 }
